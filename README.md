@@ -46,29 +46,38 @@ All modern browsers (Chrome, Firefox, IE7+, Edge, Safari Opera) have a built-in 
 Syntax for creating an XMLHttpRequest object:
 
 variable = new XMLHttpRequest();
+
 Example
+
 var xhttp = new XMLHttpRequest();
 
 
 XMLHttpRequest Object Methods
 Method	Description
-new XMLHttpRequest()	Creates a new XMLHttpRequest object
-abort()	Cancels the current request
-getAllResponseHeaders()	Returns header information
-getResponseHeader()	Returns specific header information
-open(method,url,async,user,psw)	Specifies the request
+new XMLHttpRequest()	                         Creates a new XMLHttpRequest object
+abort()	                                       Cancels the current request
+getAllResponseHeaders()                       	Returns header information
+getResponseHeader()	                           Returns specific header information
+open(method,url,async,user,psw)                	Specifies the request
 
 method: the request type GET or POST
+
 url: the file location
 async: true (asynchronous) or false (synchronous)
 user: optional user name
 psw: optional password
-send()	Sends the request to the server
+send()	                                 Sends the request to the server
 Used for GET requests
 send(string)	Sends the request to the server.
+
 Used for POST requests
+
+
 setRequestHeader()	Adds a label/value pair to the header to be sent
+
 XMLHttpRequest Object Properties
+
+
 Property	Description
 onreadystatechange	Defines a function to be called when the readyState property changes
 readyState	Holds the status of the XMLHttpRequest.
@@ -87,6 +96,7 @@ For a complete list go to the Http Messages Reference
 statusText	Returns the status-text (e.g. "OK" or "Not Found")
 
 Send a Request To a Server
+
 To send a request to a server, we use the open() and send() methods of the XMLHttpRequest object:
 
 xhttp.open("GET", "ajax_info.txt", true);
@@ -106,16 +116,19 @@ GET Requests
 A simple GET request:
 
 Example
+
 xhttp.open("GET", "demo_get.asp", true);
 xhttp.send();
 In the example above, you may get a cached result. To avoid this, add a unique ID to the URL:
 
 Example
+
 xhttp.open("GET", "demo_get.asp?t=" + Math.random(), true);
 xhttp.send();
 If you want to send information with the GET method, add the information to the URL:
 
 Example
+
 xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford", true);
 xhttp.send();
  
@@ -123,11 +136,13 @@ POST Requests
 A simple POST request:
 
 Example
+
 xhttp.open("POST", "demo_post.asp", true);
 xhttp.send();
 To POST data like an HTML form, add an HTTP header with setRequestHeader(). Specify the data you want to send in the send() method:
 
 Example
+
 xhttp.open("POST", "demo_post2.asp", true);
 xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xhttp.send("fname=Henry&lname=Ford");
@@ -158,6 +173,8 @@ With the XMLHttpRequest object you can define a function to be executed when the
 The function is defined in the onreadystatechange property of the XMLHttpResponse object:
 
 Example
+
+
 xhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
     document.getElementById("demo").innerHTML = this.responseText;
